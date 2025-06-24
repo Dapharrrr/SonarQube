@@ -3,19 +3,16 @@ const db = require('./db');
 
 const UserController = {
     createUser: (name, email) => {
-        if (name && email) {
-            const user = { name, email };
-            db.save(user);
-            return user;
+        if (!validateUser({ name, email })) {
+            throw new Error("Invalid user data");
         }
-        return null;
+        
+        const user = { name, email };
+        db.save(user);
+        return user;
     },
     getUser: (email) => {
-        const user = db.find(email); 
-        if (user) {
-            return user;
-        }
-        return null;
+        return db.find(email); // Simplification: retourne directement le résultat de la recherche
     }
 };
 
