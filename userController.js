@@ -5,13 +5,13 @@ const UserController = {
     createUser: (name, email) => {
         if (name && email) {
             const user = { name, email };
-            db.save(user); // Simuler la sauvegarde d'un utilisateur.
+            db.save(user);
             return user;
         }
         return null;
     },
     getUser: (email) => {
-        const user = db.find(email); // Simuler la recherche d'un utilisateur.
+        const user = db.find(email); 
         if (user) {
             return user;
         }
